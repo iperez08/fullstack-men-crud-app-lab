@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Ingredient</title>
+</head>
+
+<body>
+    <h1>Create a new ingredient for the mainframe!</h1>
+    <form action="/ingredients" method="POST">
+        <div>
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name"/>
+        </div>
+        <div>
+            <label for="size">Serving Size: </label>
+            <input type="number" min="0" id="size" name="size">
+            <label for="measurement">Unit of Measurement: </label>
+            <input type="text" id="measurement" name="measurement">
+        </div>
+        <div>
+            <label for="calories">Calories: </label>
+            <input type="number" min="0" id="calories" name="calories">
+        </div>
+        <div>
+            <label for="protein">Protein (g): </label>
+            <input type="number" min="0" id="protein"  name="protein">
+        </div>
+        <div>
+            <label for="carbs">Carbs (g): </label>
+            <input type="number" min="0" id="carbs" name="carbs">
+        </div>
+        <div>
+            <label for="fat">Fat (g): </label>
+            <input type="number" min="0" id="fat"name="fat" >
+        </div>
+        <button type="submit">Add ingredient</button>
+    </form>
+
+</body>
+
+</html>

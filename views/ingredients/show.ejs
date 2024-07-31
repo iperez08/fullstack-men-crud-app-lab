@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= ingredient.name %>
+    </title>
+</head>
+
+<body>
+    <h1>
+        <%= ingredient.name %>
+    </h1>
+    <div>
+        Serving size: <%= ingredient.size %><%= ingredient.measurement %>
+        Calories: <%= ingredient.calories %>
+        Protein: <%= ingredient.protein %>g
+        Carbs: <%= ingredient.carbs %>g
+        Fat: <%= ingredient.far %>g
+    </div>
+    <a href="/">Home</a>
+    <a href="/ingredients">Browse All Ingredients</a>
+    <a href="/ingredients/<%= ingredient._id %>/edit">Edit Ingredient</a>
+</body>
+
+</html>
