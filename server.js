@@ -8,8 +8,9 @@ import methodOverride from "method-override"
 const port = 3000
 const app = express()
 
-/* -------------------- read the body of request -------------------- */
+/* -------------------- `app.use` and connect to MongoDB -------------------- */
 app.use(express.urlencoded({ extended: false }))
+app.use(methodOverride("_method"))
 
 mongoose.connect(process.env.MONGODB_URI)
 
@@ -24,16 +25,16 @@ app.get("/ingredients", async (req, res) => {
     res.render("ingredients/index.ejs", { ingredients: ingredients })
 })
 
+app.get("/ingredients/new", async (req, res) => {
+    res.render("ingredients/new.ejs")
+})
+
 app.get("/ingredients/:ingredientID", async (req, res) => {
     const ingredient = await Ingredient.findById(req.params.ingredientID)
     res.render("ingredients/show.ejs", {ingredient: ingredient})
 })
 
 /* -------------------- post cycle -------------------- */
-
-app.get("/ingredients/new", async (req, res) => {
-    res.render("ingredients/new.ejs")
-})
 
 app.post("/ingredients", async (req, res) => {
     await Ingredient.create(req.body)
@@ -47,14 +48,17 @@ app.get("/ingredients/:ingredientID/edit", async (req, res) => {
     res.render("ingredients/edit.ejs", {ingredient: ingredient})
 })
 
-// app.put("/ingredients/:ingredientID", async (req, res) => {
-//     await Ingredient.findByIdAndUpdate(req.params.ingredientID, req.body)
-//     res.redirect(`/ingredients/${req.params.ingredientID}`)
-// })
+app.put("/ingredients/:ingredientID", async (req, res) => {
+    await Ingredient.findByIdAndUpdate(req.params.ingredientID, req.body)
+    res.redirect(`/ingredients/${req.params.ingredientID}`)
+})
 
 /* -------------------- delete --------------------*/
 
-
+app.delete("/ingredients/:ingredientID", async (req, res) => {
+    await Ingredient.findByIdAndDelete(req.params.ingredientID)
+    res.redirect("/ingredients")
+})
 
 /* -------------------- port -------------------- */
 app.listen(port, () => {

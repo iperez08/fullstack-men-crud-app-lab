@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit <%= ingredient.name %> </title>
+    <title>Edit <%= ingredient.name %>
+    </title>
 </head>
+
 <body>
-    <h1>Let's edit <%= ingredient.name %> </h1>
+    <h1>Let's edit <%= ingredient.name %>.
+    </h1>
     <form action="/ingredients/<%= ingredient._id %>?_method=PUT" method="POST">
         <div>
             <label for="name">Name: </label>
-            <input type="text" id="name" name="name" value="<%= ingredient.name%>"/>
+            <input type="text" id="name" name="name" value="<%= ingredient.name%>" />
         </div>
         <div>
             <label for="size">Serving Size: </label>
@@ -24,7 +28,7 @@
         </div>
         <div>
             <label for="protein">Protein (g): </label>
-            <input type="number" min="0" id="protein"  name="protein" value="<%= ingredient.protein%>">
+            <input type="number" min="0" id="protein" name="protein" value="<%= ingredient.protein%>">
         </div>
         <div>
             <label for="carbs">Carbs (g): </label>
@@ -32,10 +36,14 @@
         </div>
         <div>
             <label for="fat">Fat (g): </label>
-            <input type="number" min="0" id="fat"name="fat" value="<%= ingredient.fat%>">
+            <input type="number" min="0" id="fat" name="fat" value="<%= ingredient.fat%>">
         </div>
         <button type="submit">Update Ingredient</button>
     </form>
+    <form action="/ingredients/<%= ingredient._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= ingredient.name%></button>
+    </form>
     <a href="/ingredients">Browse All Ingredients</a>
 </body>
+
 </html>
